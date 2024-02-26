@@ -1,5 +1,4 @@
-
-public class DsaLink {
+public class ReverseLIst {
     class Node {
         Node next;
         String data;
@@ -12,13 +11,12 @@ public class DsaLink {
 
     Node head;
 
-    public void addLast(String data) {
+    public void addList(String data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
             return;
         }
-
         Node currNode = head;
         while (currNode.next != null) {
             currNode = currNode.next;
@@ -28,21 +26,19 @@ public class DsaLink {
 
     public void printList() {
         if (head == null) {
-            System.out.println("This is empty List");
+            System.out.println("This is a Empty List.");
             return;
         }
-
         Node currNode = head;
         while (currNode != null) {
             System.out.print(currNode.data + "-->");
             currNode = currNode.next;
         }
         System.out.println("null");
-
     }
 
-    public void reverseList() {
-        if (head == null || head.next == null) {
+    public void reverseList(){
+        if(head == null || head.next == null){
             return;
         }
         Node prevNode = head;
@@ -51,37 +47,23 @@ public class DsaLink {
             Node nextNode = currNode.next;
             currNode.next = prevNode;
 
-            // Update
+            //update
             prevNode = currNode;
             currNode = nextNode;
         }
         head.next = null;
         head = prevNode;
-
-    }
-
-    public Node reverseRecursive(Node head) {
-
-        if (head == null || head.next == null) {
-            return head;
-        }
-
-        Node newNode = reverseRecursive(head.next);
-        head.next.next = head;
-        head.next = null;
-
-        return newNode;
     }
 
     public static void main(String[] args) {
-        DsaLink list = new DsaLink();
-        list.addLast("Hello");
-        list.addLast("This ");
-        list.addLast("is");
-        list.addLast("code");
 
-        list.printList();
-        list.head = list.reverseRecursive(list.head);
-        list.printList();
+     ReverseLIst list = new ReverseLIst();
+     list.addList("Hello");
+     list.addList("How");
+     list.addList("are");
+     list.addList("you");
+     list.printList();
+     list.reverseList();
+     list.printList();
     }
 }
